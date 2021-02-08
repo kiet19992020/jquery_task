@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    
+    <title>Jquery</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>slider</h1>
+        <div class="slider-outer">
+          <img src="images/arrow-left.png" class="prev" alt="Prev">
+          <div class="slider-inner">
+            <img src="images/12-du-lich-ta-van-nha-Lazy-Crazy.jpg" alt="12-du-lich-ta-van-nha-Lazy-Crazy.jpg" class="active">
+            <img src="images/15-du-lich-ta-van-Y-Linh-Ho-2.jpg">
+            <img src="images/casa-marina-resort-quy-nhon-10.jpg">
+            <img src="images/sapa_1.jpg">
+          </div>
+          <img src="images/arrow-right.png" class="next" alt="Next">
+        </div>
+    </div>
+    <div class="main">  
+        <div class="show active" >
+            <div style="width: 15px; height: 15px; background-color: #bb302d; display: inline-block;"></div>
+            <span>WHO confirmed</span>
+            <button class="btn_slide"><i class="fas fa-angle-right"></i></button>
+             <div class="row_p">These are cases officially reported by the World Health Organization. 
+                 This can be denoted by the "Red" color on the map.</div>
+                 <br>
+            <div class="hr"></div>
+        </div>
+
+        <br>
+        <div class="show" >
+            <div style="width: 15px; height: 15px; background-color: rgb(10, 1, 1); display: inline-block;"></div>
+            <span>WHO Deaths</span>
+            <button class="btn_slide"><i class="fas fa-angle-right"></i></button>
+             <div  class="row_p" style="display: none;">This follows the official death count put out by the World Health Organization. 
+                 This can be denoted by the "Brown" color on the map.</div>
+            <div class="hr"></div>
+        </div>
+
+        <br>
+
+        <div class="show" >
+            <div style="width: 15px; height: 15px; background-color:#ebb8bd; display: inline-block;"></div>
+            <span>WHO Deaths</span>
+            <button class="btn_slide"><i class="fas fa-angle-right"></i></button>
+             <div  class="row_p" style="display: none;">This follows the official death count put out by the World Health Organization. 
+                 This can be denoted by the "Brown" color on the map.</div>
+            <div class="hr"></div>
+        </div> 
+        <br>
+        <div class="show" >
+            <div style="width: 15px; height: 15px; background-color: #cbbe3d; display: inline-block;"></div>
+            <span>WHO Deaths</span>
+            <button class="btn_slide"><i class="fas fa-angle-right"></i></button>
+             <div  class="row_p" style="display: none;">This follows the official death count put out by the World Health Organization. 
+                 This can be denoted by the "Brown" color on the map.</div>
+            <div class="hr"></div>
+        </div> 
+        <br>
+        <div class="show" >
+            <div style="width: 15px; height: 15px; background-color: #38878a; display: inline-block;"></div>
+            <span>WHO Deaths</span>
+            <button class="btn_slide"><i class="fas fa-angle-right"></i></button>
+             <div  class="row_p" style="display: none;">This follows the official death count put out by the World Health Organization. 
+                 This can be denoted by the "Brown" color on the map.</div>
+            <div class="hr"></div>
+        </div> 
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+      $('.next').on('click', function() {
+          var currenImg = $('.active');
+          var nextImg = currenImg.next();
+
+          if(nextImg.length) {
+              currenImg.removeClass('active').css('z-index',-10);
+              nextImg.addClass('active').css('z-index',10);
+          }
+      });
+      $('.prev').on('click',function() {
+          var currenImg = $('.active');
+          var prevImg = currenImg.prev();
+
+          if(prevImg.length) {
+              currenImg.removeClass('active').css('z-index',-10);
+              prevImg.addClass('active').css('z-index',10);
+          }
+      });
+
+      $(".show").click(function() {
+            $(this).toggleClass('active').siblings().removeClass('active');
+            const row = $(this).children('.row_p');
+            $('.row_p').not(row).slideUp();
+            row.slideToggle('fast');
+        }); 
+    });
+  </script>
+</html>
